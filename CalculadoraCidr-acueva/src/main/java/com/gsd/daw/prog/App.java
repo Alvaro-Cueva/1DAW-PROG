@@ -11,7 +11,7 @@ public class App {
         }
 		
 		if(args.length!=2) {		
-			System.err.println("Error, argumentos inválidos,(<ip> <bits de máscara>) ");
+			System.err.println("ERROR: Argumentos inválidos,,,(<ip> <bits de máscara>) ");
 			return;
 		}
 		
