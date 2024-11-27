@@ -11,6 +11,9 @@ public class Matriz {
 		if(!isMatrizValida(a) || !isMatrizValida(b)) {
 			return null;
 		}
+		if(a.length != b.length || a[0].length != b[0].length) {
+			return null;
+		}	
 		int [][] suma = new int[a.length][a[0].length];
 		for(int i =0;i<a.length;i++) {
 			for(int j=0; j<a[i].length;j++) {
@@ -120,7 +123,7 @@ public class Matriz {
 		}
 		int maxElemento=m[0][0];
 		for(int i=0; i<m.length;i++) {
-			for(int j=0;j<m.length;j++) {
+			for(int j=0;j<m[i].length;j++) {
 				if(m[i][j] > maxElemento) {
 					maxElemento =m[i][j];
 				}
@@ -142,7 +145,7 @@ public class Matriz {
 		int maxElemento =m[0][0];
 		
 		for(int i=0; i<m.length;i++) {
-			for(int j=0;j<m.length;j++) {
+			for(int j=0;j<m[i].length;j++) {
 				if(m[i][j] > maxElemento) {
 					maxElemento =m[i][j];
 					maxFila=i;
