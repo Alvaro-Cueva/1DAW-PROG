@@ -22,4 +22,7 @@ public class Rectangulo {
 		this.stroke = stroke;
 	}
 	
+	public String toSvg() {
+		return "<rect x=\""+this.origen.getX()+"\" y=\""+origen.getY()+"\" width=\""+ancho+"\" height=\""+alto+"\" "+stroke.toSvg()+" fill=\"none\"/>";
+	}
 }

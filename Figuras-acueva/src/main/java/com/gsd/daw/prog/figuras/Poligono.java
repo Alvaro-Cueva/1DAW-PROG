@@ -4,7 +4,6 @@ public class Poligono {
 	private Punto [] puntos;
 	private Stroke stroke;
 	public Poligono(Punto[] puntos) {
-		super();
 		this.puntos = puntos;
 		this.stroke = new Stroke(new Color((byte)0,(byte)0,(byte)0),1);
 	}
@@ -13,6 +12,15 @@ public class Poligono {
 			throw new IllegalArgumentException("Los argumentos no pueden ser null");
 		}
 		this.stroke = stroke;
+	}
+	
+	public String toSvg(){
+		String points = "";
+		for (int i = 0; i < puntos.length; i++) {
+	        points += puntos[i].getX() + "," + puntos[i].getY() + " ";
+	    }
+	    points = points.trim();
+		return "<polygon points=\""+points+"\" "+stroke.toSvg()+" fill=\"none\"/>";
 	}
 	
 }

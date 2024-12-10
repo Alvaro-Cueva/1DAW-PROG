@@ -17,7 +17,14 @@ public class LineaPoligonal {
 		this.stroke = stroke;
 	}
 	
-	
+	public String toSvg() {
+		String points = "";
+		for (int i = 0; i < puntos.length; i++) {
+	        points += puntos[i].getX() + "," + puntos[i].getY() + " ";
+	    }
+	    points = points.trim();
+		return "<polyline points=\""+points+"\" "+stroke.toSvg()+" fill=\"none\"/>";
+	}
 	
 	
 }

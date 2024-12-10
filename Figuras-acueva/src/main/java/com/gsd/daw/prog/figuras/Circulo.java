@@ -25,9 +25,6 @@ public class Circulo {
 
 
 	public String toSvg() {
-		return "<circle cx=\""+centro.getX()+"\" cy=\""+centro.getY()+"\" r=\""+this.radio+"\" "+stroke.toSvg();
+		return "<circle cx=\""+centro.getX()+"\" cy=\""+centro.getY()+"\" r=\""+this.radio+"\" "+stroke.toSvg()+" fill=\"none\"/>";
 	}
-	//defaul final revisar 
-	//"<ellipse cx=\""+centro.getX()+"\" cy=\""+centro.getY()+"\" rx=\""+this.radio1+"\" ry=\""+this.radio2+"\" "+stroke.toSvg();
-	//<circle cx="157" cy="497" r="410" stroke="rgb(79,191,2)" stroke-width="16" fill="none"/>
 }

@@ -12,7 +12,7 @@ public class Stroke {
 	}
 	
 	public String toSvg() {
-		return "stroke=\""+color.toSvg()+" stroke-width=\""+width+"\" fill=\"none\"/>";
+		return "stroke=\""+color.toSvg()+" stroke-width=\""+width+"\"";
 	}
 	
 }
