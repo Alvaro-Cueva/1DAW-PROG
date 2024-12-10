@@ -24,7 +24,7 @@ public class Color {
 	}
 	
 	public String toSvg() {
-		 return String.format("#%02X%02X%02X", red, green, blue);
+		 return "rgb("+this.red+","+this.green+","+this.blue+")\"";
 	}
 	
 }

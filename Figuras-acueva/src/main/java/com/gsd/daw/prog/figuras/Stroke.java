@@ -11,4 +11,8 @@ public class Stroke {
 		this.width = width;
 	}
 	
+	public String toSvg() {
+		return "stroke=\""+color.toSvg()+" stroke-width=\""+width+"\" fill=\"none\"/>";
+	}
+	
 }
