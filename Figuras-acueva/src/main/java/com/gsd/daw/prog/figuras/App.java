@@ -15,7 +15,7 @@ public class App {
      Punto p2 = new Punto(200, 100);
      Punto p3 = new Punto(200, 200);
      Punto p4 = new Punto(100, 200);
-     Punto[] puntos = {p1,p1,p1};
+     Punto[] puntos = {};
      Punto[] puntos2 = {p3, p2, p1, p4};
      Poligono poligono = new Poligono(puntos);
 	 
