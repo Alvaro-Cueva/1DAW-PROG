@@ -4,7 +4,7 @@ public class Triangulo {
 	private Punto [] puntos;
 	private Stroke stroke;	
 	public Triangulo(Punto[] puntos) {
-		if(puntos==null) {
+		if(puntos==null||puntos.length<=0) {
 			throw new IllegalArgumentException("Los argumentos no pueden ser null");
 		}
 		this.puntos = puntos;

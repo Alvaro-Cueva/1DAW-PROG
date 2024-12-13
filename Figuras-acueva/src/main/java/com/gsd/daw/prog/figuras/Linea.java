@@ -21,7 +21,7 @@ public class Linea {
 	
 	public String toSvg() {
 		
-		return "<line x1=\""+punto1.getX()+"\" y1=\""+punto1.getY()+"\" x2=\""+punto2.getX()+"\" y2=\""+punto2.getY()+"\" "+stroke.toSvg()+" fill=\"none\"/>";
+		return "<line x1=\""+punto1.getX()+"\" y1=\""+punto1.getY()+"\" x2=\""+punto2.getX()+"\" y2=\""+punto2.getY()+"\" "+stroke.toSvg()+"/>";
 	}
 	
 	

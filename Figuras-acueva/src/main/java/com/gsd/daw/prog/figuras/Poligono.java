@@ -4,6 +4,9 @@ public class Poligono {
 	private Punto [] puntos;
 	private Stroke stroke;
 	public Poligono(Punto[] puntos) {
+		if(puntos.length<=0) {
+			throw new IllegalArgumentException("Los argumentos no pueden estar vacios");
+		}
 		this.puntos = puntos;
 		this.stroke = new Stroke(new Color((byte)0,(byte)0,(byte)0),1);
 	}
