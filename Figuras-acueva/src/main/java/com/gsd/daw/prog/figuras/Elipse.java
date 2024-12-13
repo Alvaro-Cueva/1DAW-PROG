@@ -22,7 +22,7 @@ public class Elipse {
 	}
 	
 	public String toSvg() {
-		return "<ellipse cx=\""+centro.getX()+"\" cy=\""+centro.getY()+"\" rx=\""+this.radio1+"\" ry=\""+this.radio2+"\" "+stroke.toSvg();
+		return "<ellipse cx=\""+centro.getX()+"\" cy=\""+centro.getY()+"\" rx=\""+this.radio1+"\" ry=\""+this.radio2+"\" "+stroke.toSvg()+" fill=\"none\"/>";
 				
 	}
 	
