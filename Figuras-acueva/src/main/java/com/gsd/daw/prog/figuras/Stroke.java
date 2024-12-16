@@ -5,7 +5,7 @@ public class Stroke {
 	private Integer width;
 	public Stroke(Color color, Integer width) {
 		if(color==null || width== null) {
-			throw new IllegalArgumentException("Los valores de los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.color = color;
 		this.width = width;

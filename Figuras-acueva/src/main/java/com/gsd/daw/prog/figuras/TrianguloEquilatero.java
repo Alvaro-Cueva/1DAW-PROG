@@ -6,7 +6,7 @@ public class TrianguloEquilatero {
 	private Stroke stroke;
 	public TrianguloEquilatero(Punto origen, Integer tamanolado) {
 		if(origen==null||tamanolado==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.origen = origen;
 		this.tamanolado = tamanolado;
@@ -14,7 +14,7 @@ public class TrianguloEquilatero {
 	}
 	public void setStroke(Stroke stroke) {
 		if(stroke==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.stroke = stroke;
 	}

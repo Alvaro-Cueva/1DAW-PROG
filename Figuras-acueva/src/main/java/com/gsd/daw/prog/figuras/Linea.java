@@ -6,7 +6,7 @@ public class Linea {
 	private Stroke stroke;
 	public Linea(Punto punto1, Punto punto2) {
 		if(punto1==null||punto2==null) {
-			throw new IllegalArgumentException("Los parámetros no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.punto1 = punto1;
 		this.punto2 = punto2;
@@ -14,7 +14,7 @@ public class Linea {
 	}
 	public void setStroke(Stroke stroke) {
 		if(stroke == null) {
-			throw new IllegalArgumentException("Los parámetros no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.stroke = stroke;
 	}

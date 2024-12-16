@@ -7,7 +7,7 @@ public class Elipse {
 	private Stroke stroke;
 	public Elipse(Punto centro, Integer radio1, Integer radio2) {
 		if(centro==null||radio1==null||radio2==null) {
-			throw new IllegalArgumentException("No puede haber argumentos en null");
+			throw new IllegalArgumentException();
 		}
 		this.centro = centro;
 		this.radio1 = radio1;
@@ -16,7 +16,7 @@ public class Elipse {
 	}
 	public void setStroke(Stroke stroke) {
 		if(stroke==null) {
-			throw new IllegalArgumentException("No puede haber argumentos en null");
+			throw new IllegalArgumentException();
 		}
 		this.stroke = stroke;
 	}

@@ -8,7 +8,7 @@ public class Contenedor {
 	
 	public Contenedor(Integer ancho, Integer alto) {
 		if(ancho==null||alto==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.ancho = ancho;
 		this.alto = alto;
@@ -16,42 +16,42 @@ public class Contenedor {
 	
 	public void addCirculo(Circulo figura) {
 		if(figura==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		Svg+=figura.toSvg()+"\n";
 	}
 	
 	public void addElipse(Elipse figura) {
 		if(figura==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		Svg+=figura.toSvg()+"\n";
 	}
 	
 	public void addLinea(Linea figura) {
 		if(figura==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		Svg+=figura.toSvg()+"\n";
 	}
 	
 	public void addLineaPoligonal(LineaPoligonal figura) {
 		if(figura==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		Svg+=figura.toSvg()+"\n";
 	}
 	
 	public void addPoligono(Poligono figura) {
 		if(figura==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		Svg+=figura.toSvg()+"\n";
 	}
 	
 	public void addRectangulo(Rectangulo figura) {
 		if(figura==null) {
-			throw new IllegalArgumentException("Los argumentos no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		Svg+=figura.toSvg()+"\n";
 	}

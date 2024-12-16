@@ -7,7 +7,7 @@ public class Color {
 	public Color(Byte red, Byte green, Byte blue) {
 		
 		if (red==null || green== null || blue==null) {
-			throw new IllegalArgumentException("Los parámetros no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.red = red;
 		this.green = green;
@@ -19,7 +19,7 @@ public class Color {
 		int greenRgb= this.green & 0xFE;
 		int blueRgb= this.blue & 0xFE;
 		if(redRgb>255||redRgb<0||greenRgb>255||greenRgb<0||blueRgb>255||blueRgb<0) {
-			throw new IllegalArgumentException("El valor de los bytes es incorrecto(0-255)");
+			throw new IllegalArgumentException();
 		}
 		 return "rgb("+redRgb+","+greenRgb+","+blueRgb+")\"";
 	}

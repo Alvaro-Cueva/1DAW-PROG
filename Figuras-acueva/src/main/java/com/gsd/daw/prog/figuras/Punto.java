@@ -5,7 +5,7 @@ public class Punto {
 	private Integer y;
 	public Punto(Integer x, Integer y) {
 		if(x==null||y==null) {
-			throw new IllegalArgumentException("Los valores no pueden ser null");
+			throw new IllegalArgumentException();
 		}
 		this.x = x;
 		this.y = y;
