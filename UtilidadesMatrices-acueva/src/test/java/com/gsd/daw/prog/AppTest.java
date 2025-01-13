@@ -19,4 +19,10 @@ public class AppTest {
 		App.main(null);
 		assertTrue(true);
 	}
+	
+	@Test
+	@DisplayName("Matriz valida")
+	public void matrizValida() {
+		int [][] a = {{1,2,3,4},{1,2,3}};
+	}
 }

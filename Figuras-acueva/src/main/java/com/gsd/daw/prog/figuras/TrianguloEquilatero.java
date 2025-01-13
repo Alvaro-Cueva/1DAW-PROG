@@ -19,4 +19,8 @@ public class TrianguloEquilatero {
 		this.stroke = stroke;
 	}
 	
+	public String toSvg() {
+		return "";
+	}
+	
 }

@@ -17,4 +17,8 @@ public class Triangulo {
 		}
 		this.stroke = stroke;
 	}
+	public String toSvg() {
+		return "";
+	}
+	
 }
