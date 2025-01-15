@@ -142,6 +142,24 @@ public class AppTest {
 	}
 	
 	@Test
+	@DisplayName("Comprobar si la ip 192.0.0.0 es reservada")
+	public void isIpReservada4() {
+		// La ip son int validos. 
+		String ip = "192.0.0.0";	
+		assertTrue(App.esIpReservada(ip));
+	}
+	
+	
+	
+	@Test
+	@DisplayName("Ip mal dentro de valores validos")
+	public void isIpValidaMal() {
+		// La ip son int validos. 
+		String ip = "240.255.255.255.120";	
+		assertFalse(App.isIpDentroDeValoresValidos(ip));
+	}
+	
+	@Test
 	@DisplayName("Ip siendo mayor")
 	public void isIpValidaMayor() {
 		// La ip son int validos. 

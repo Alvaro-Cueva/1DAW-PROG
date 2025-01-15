@@ -54,6 +54,7 @@ public class App {
 			System.err.println("ERROR, la máscara debe estar entre 0 y 32 ambos incluidos");
 			return false;
 		}
+		
 		return true;
 	}
 	
@@ -121,9 +122,13 @@ public class App {
 	
 	
 	public static void main(String[] args) {
-		
-//		String ip = args[0];
-//		String mascara = args[1];
+		isLongitudArgumentos(args);
+		String ip = args[0];
+		String mascara = args[1];
+		isLongitudIpValida(ip);
+		isIpDentroDeValoresValidos(ip);
+		esIpReservada(ip);
+		isMascaraDentroDeValoresValidos(mascara);
 		
 //			
 //		if(!ip.matches("\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}")) {
