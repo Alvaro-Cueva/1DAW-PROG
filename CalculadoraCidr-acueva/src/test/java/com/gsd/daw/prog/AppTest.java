@@ -1,6 +1,5 @@
 package com.gsd.daw.prog;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -14,133 +13,165 @@ import org.junit.jupiter.api.TestMethodOrder;
 @TestMethodOrder(MethodOrderer.DisplayName.class)
 public class AppTest {
 	
+	
+	/*
+	 * Comprueba que la longitud de argumentos sea incorrecta, en este caso una longitud inferior.
+	 */
 	@Test
 	@DisplayName("Args tiene una longitud inferior")
 	public void argsInferior() {
-		// Este test tiene la longitud de argumentos incorrecta, en este caso una longitud inferior. 
 		String []args = {"192.192.192.123"};
 		assertFalse(App.isLongitudArgumentos(args));
 	}
+	
+	
+	/*
+	 * Comprueba que la longitud de argumentos sea incorrecta,, en este caso una longitud superior. 
+	 */
 	@Test
 	@DisplayName("Args tiene una longitud superior")
 	public void argsSuperior() {
-		// Este test tiene la longitud de argumentos incorrecta, en este caso una longitud superior. 
 		String []args = {"192.192.192.192.192","23","23"};	
 		assertFalse(App.isLongitudArgumentos(args));
 	}
 	
+	
+	/*
+	 * Comprueba que la longitud de argumentos sea correcta.
+	 */
 	@Test
 	@DisplayName("Args tiene una longitud correcta")
 	public void argsCorrecto() {
-		// Este test tiene la longitud de argumentos correcta. 
 		String []args = {"192.192.192.192","23"};	
 		assertTrue(App.isLongitudArgumentos(args));
 
 	}
 	
+	
+	/*
+	 * Comprueba que el formato de la ip es incorrecto, en este caso por formato inferior.
+	 */
+	
 	@Test
 	@DisplayName("Formato ip inferior")
 	public void formatoIpIncorrecto() {
-		// el formato de la ip incorrecta. 
-		String ip = "192.192.192192";	
-		assertFalse(App.isLongitudIpValida(ip));
-	}
-	
-	@Test
-	@DisplayName("Formato ip incorrecto")
-	public void formatoIpInferior() {
-		// el formato de la ip incorrecta. 
 		String ip = "192.192.192192";	
 		assertFalse(App.isLongitudIpValida(ip));
 	}
 	
 	
-	
+	/*
+	 * Comprueba que el formato de la ip es incorrecto, en este caso por formato superior.
+	 */
 	@Test
 	@DisplayName("Formato ip superior")
 	public void formatoIpSuperior() {
-		//  el formato de la ip correcta. 
 		String ip = "192.192.192.192.192";	
 		assertFalse(App.isLongitudIpValida(ip));
 	}
 	
+	
+	/*
+	 * Comprueba que el formato de la ip no puede acabar en punto.
+	 */
 	@Test
 	@DisplayName("Formato ip acabado en punto")
 	public void formatoIpAcabadoEnPunto() {
-		//  el formato de la ip correcta. 
 		String ip = "192.192.192.192.";	
 		assertFalse(App.isLongitudIpValida(ip));
 	}
 	
+	
+	/*
+	 * Comprueba que el formato de la ip siendo correcta.
+	 */
 	@Test
 	@DisplayName("Formato ip correcta")
 	public void formatoIpCorrecta() {
-		//  el formato de la ip correcta. 
 		String ip = "192.192.192.192";	
 		assertTrue(App.isLongitudIpValida(ip));
 	}
 	
 	
-	
+	/*
+	 * Comprueba el formato de la mascara siendo una máscara superior.
+	 */
 	@Test
 	@DisplayName("Formato mascara superior")
 	public void formatoMascaraSuperior() {
-		// la mascara incorrecta. 
 		String mascara = "2233";	
 		assertFalse(App.isMascaraDentroDeValoresValidos(mascara));
 	}
 	
+	
+	/*
+	 * Comprueba el formato de la mascara siendo un máscara inferior.
+	 */
 	@Test
 	@DisplayName("Formato mascara inferior")
 	public void formatoMascaraIpInferior() {
-		// la mascara incorrecta. 
 		String mascara = "-20";	
 		assertFalse(App.isMascaraDentroDeValoresValidos(mascara));
 	}
 	
 	
+	/*
+	 * Comprueba si el formato de la mascara es un int válido. 
+	 */
 	@Test
 	@DisplayName("Formato mascara int invalido")
 	public void formatoMascaraIntInvalido() {
-		// la mascara incorrecta. 
 		String mascara = "l20";	
 		assertFalse(App.isMascaraDentroDeValoresValidos(mascara));
 	}
 	
 	
+	/*
+	 * Comprueba el formato de la mascara de forma correcta.
+	 */
 	@Test
 	@DisplayName("Formato mascara correcta")
 	public void mascaraCorrecta() {
-		// la mascara correcta. 
 		String mascara = "23";	
 		assertTrue(App.isMascaraDentroDeValoresValidos(mascara));
 	}
 	
 	
+	/*
+	 * Comprueba la ip reservada(0.0.0.0).
+	 */
 	@Test
 	@DisplayName("Comprobar si la ip es reservada 0.0.0.0")
 	public void isIpReservada1() {
-		// La ip son int validos. 
 		String ip = "0.0.0.0";	
 		assertFalse(App.esIpReservada(ip));
 	}
 	
+	
+	/*
+	 * Comprueba la ip reservada(255.255.255.255).
+	 */
 	@Test
 	@DisplayName("Comprobar si la ip es reservada 255.255.255.255")
 	public void isIpReservada2() {
-		// La ip son int validos. 
 		String ip = "255.255.255.255";	
 		assertFalse(App.esIpReservada(ip));
 	}
 	
+	
+	/*
+	 * Comprobar si es un int valido en la ip reservada.
+	 */
 	@Test
 	@DisplayName("Comprobar si la ip es reservada 255.255.255.255")
 	public void isIpReservada3() {
-		// La ip son int validos. 
 		String ip = "1500.255.255.255";	
 		assertFalse(App.esIpReservada(ip));
 	}
 	
+	/*
+	 * Comprobar si una ip correcta es reservada.
+	 */
 	@Test
 	@DisplayName("Comprobar si la ip 192.0.0.0 es reservada")
 	public void isIpReservada4() {
@@ -150,389 +181,325 @@ public class AppTest {
 	}
 	
 	
-	
+	/*
+	 * Comprobar un Ip con argumentos invalidos.
+	 */
 	@Test
 	@DisplayName("Ip mal dentro de valores validos")
 	public void isIpValidaMal() {
-		// La ip son int validos. 
 		String ip = "240.255.255.255.120";	
 		assertFalse(App.isIpDentroDeValoresValidos(ip));
 	}
 	
+	
+	/*
+	 * Comprobar una Ip con una parte superior.
+	 */
 	@Test
 	@DisplayName("Ip siendo mayor")
 	public void isIpValidaMayor() {
-		// La ip son int validos. 
 		String ip = "260.255.255.255";	
 		assertFalse(App.isIpDentroDeValoresValidos(ip));
 	}
 	
+	
+	/*
+	 * Comprobar una Ip con una parte inferior.
+	 */
 	@Test
 	@DisplayName("Ip siendo menor")
 	public void isIpValidaMenor() {
-		// La ip son int validos. 
 		String ip = "12.255.-255.255";	
 		assertFalse(App.isIpDentroDeValoresValidos(ip));
 	}
 	
 	
-	
+	/*
+	 * Comprobar si la Ip son int válidos.
+	 */
 	@Test
 	@DisplayName("Ip con letra")
 	public void isIpValidaLetra() {
-		// La ip son int validos. 
 		String ip = "l92.255.255.255";	
 		assertFalse(App.isIpDentroDeValoresValidos(ip));
 	}
 	
 	
+	/*
+	 * Comprueba que la ip es correcta.
+	 */
 	@Test
 	@DisplayName("Ip siendo correcta")
 	public void isIpValidaCorrecta() {
-		// La ip son int validos. 
 		String ip = "192.255.255.255";	
 		assertTrue(App.isIpDentroDeValoresValidos(ip));
 	}
 	
 	
+	/*
+	 * Comprueba la clase de la Ip con una Ip incorrecta.
+	 */
 	@Test
 	@DisplayName("Determinar clase con ip incorrecta")
 	public void determinarClaseIpIncorrecta() {
-		// La ip son int validos. 
 		String ip = "270.255.255.255";	
 		assertEquals("ERROR:Clase Inválida",App.determinarClase(ip));
 	}
-
+	
+	
+	/*
+	 * Comprueba una ip de clase A.
+	 */
 	@Test
 	@DisplayName("Determinar clase con ip correcta A")
 	public void determinarClaseIpCorrectaA() {
-		// La ip son int validos. 
 		String ip = "120.255.255.255";	
 		assertEquals("A",App.determinarClase(ip));
 	}
 	
+	
+	/*
+	 * Comprueba una ip de clase B.
+	 */
 	@Test
 	@DisplayName("Determinar clase con ip correcta B")
 	public void determinarClaseIpCorrectaB() {
-		// La ip son int validos. 
 		String ip = "170.255.255.255";	
 		assertEquals("B",App.determinarClase(ip));
 	}
 	
+	
+	/*
+	 * Comprueba una ip de clase C.
+	 */
 	@Test
 	@DisplayName("Determinar clase con ip correcta C")
 	public void determinarClaseIpCorrecta() {
-		// La ip son int validos. 
 		String ip = "192.255.255.255";	
 		assertEquals("C",App.determinarClase(ip));
 	}
 	
+	
+	/*
+	 * Comprueba una ip de Otra clase.
+	 */
 	@Test
 	@DisplayName("Determinar clase con ip correcta Otra")
 	public void determinarClaseIpCorrectaOtra() {
-		// La ip son int validos. 
 		String ip = "240.255.255.255";	
 		assertEquals("Otra",App.determinarClase(ip));
 	}
 	
 	
-	
+	/*
+	 * Comprueba si hay subnetting en una ip incorrecta.
+	 */
 	@Test
 	@DisplayName("Determinar si hay subnetting con ip incorrecta")
 	public void determinarSiHaySubnettingIpIncorrecta() {
-		// La ip son int validos. 
 		String ip = "1500.255.255.255";	
 		String mascara ="12";
 		assertFalse(App.isSubnetting(ip, mascara));
 	}
 	
 	
+	/*
+	 * Comprueba si hay subnetting con clase de tipo A(false).
+	 */
 	@Test
 	@DisplayName("Determinar si hay subnetting A")
 	public void determinarSiHaySubnettingA() {
-		// La ip son int validos. 
+		String ip = "120.255.255.255";	
+		String mascara ="8";
+		assertFalse(App.isSubnetting(ip, mascara));
+	}
+	
+	
+	/*
+	 * Comprueba si hay subnetting con clase de tipo A(true)
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting A")
+	public void determinarSiHaySubnettingACorrecto() {
 		String ip = "120.255.255.255";	
 		String mascara ="12";
 		assertTrue(App.isSubnetting(ip, mascara));
 	}
 	
-	@Test
-	@DisplayName("Determinar si hay subnetting A")
-	public void determinarSiHaySubnettingACorrecto() {
-		// La ip son int validos. 
-		String ip = "120.255.255.255";	
-		String mascara ="8";
-		assertTrue(App.isSubnetting(ip, mascara));
-	}
 	
-	
+	/*
+	 * Comprueba si hay subnetting con clase B(true). 
+	 */
 	@Test
 	@DisplayName("Determinar si hay subnetting B")
 	public void determinarSiHaySubnettingB() {
-		// La ip son int validos. 
 		String ip = "140.255.255.255";	
 		String mascara ="12";
 		assertTrue(App.isSubnetting(ip, mascara));
 	}
 	
+	
+	/*
+	 * Comprueba si hay subnetting con clase B(false). 
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting B")
+	public void determinarSiHaySubnettingBCorrecto() {
+		String ip = "140.255.255.255";	
+		String mascara ="16";
+		assertFalse(App.isSubnetting(ip, mascara));
+	}
+	
+	
+	/*
+	 * Comprueba si hay subnetting con clase C(false).
+	 */
 	@Test
 	@DisplayName("Determinar si hay subnetting C")
 	public void determinarSiHaySubnettingC() {
-		// La ip son int validos. 
+		String ip = "200.255.255.255";	
+		String mascara ="24";
+		assertFalse(App.isSubnetting(ip, mascara));
+	}
+	
+	
+	/*
+	 * Comprueba si hay subnetting con clase C(true).
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting C")
+	public void determinarSiHaySubnettingCCorrecto() {
 		String ip = "200.255.255.255";	
 		String mascara ="12";
 		assertTrue(App.isSubnetting(ip, mascara));
 	}
 	
+	
+	/*
+	 * Comprueba si hay subnetting con clase Otra.
+	 */
 	@Test
 	@DisplayName("Determinar si hay subnetting en Default")
 	public void determinarSiHaySubnettingDefault() {
-		// La ip son int validos. 
 		String ip = "240.255.255.255";	
 		String mascara ="12";
 		assertTrue(App.isSubnetting(ip, mascara));
 	}
 	
 	
+	/*
+	 * Comprueba si imprime dandole un Ip incorrecta.
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting en Default")
+	public void imprimirIpIncorrecta() {
+		String ip = "270.255.255.255";	
+		String mascara ="12";
+		assertFalse(App.imprimirIp(ip, mascara));
+	}
 	
 	
+	/*
+	 * Comprueba si imprime dandole un Ip correcta.
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting en Default")
+	public void imprimirIpCorrecta() {
+		String ip = "240.255.255.255";	
+		String mascara ="12";
+		assertTrue(App.imprimirIp(ip, mascara));
+	}
 	
 	
+	/*
+	 * Comprueba si imprime dandole un mascara incorrecta.
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting en Default")
+	public void imprimirMacaraIncorrecta() {
+		String ip = "240.255.255.255";	
+		String mascara ="72";
+		assertFalse(App.imprimirIp(ip, mascara));
+	}
 	
 	
+	/*
+	 * Comprobar main con una ip correcta.
+	 */
+	@Test
+	@DisplayName("Probar la primera línea")
+	public void mainCorrecto() {
+		String [] a={"199.192.192.192","12"};
+		App.main(a);
+	}
 	
 	
+	/*
+	 * Comprueba si imprime si hay subnetting.
+	 */
+	@Test
+	@DisplayName("Determinar si hay subnetting en Default")
+	public void imprimirSiHaySubnetting() {
+		String ip = "172.255.255.255";	
+		String mascara ="16";
+		assertTrue(App.imprimirIp(ip, mascara));
+	}
 	
 	
+	/*
+	 * Comprueba si imprime dandole un Ip incorrecta.
+	 */
+	@Test
+	@DisplayName("Determinar si no hay subnetting en Default")
+	public void imprimirSiNoHaySubnetting() {
+		String ip = "70.255.255.255";	
+		String mascara ="8";
+		assertTrue(App.imprimirIp(ip, mascara));
+	}
 	
 	
+	/*
+	 * Comprobar main con una ip reservada.
+	 */
+	@Test
+	@DisplayName("Main con Ip reservada 0.0.0.0")
+	public void mainIpReservada() {
+		String [] a={"0.0.0.0","12"};
+		App.main(a);
+	}
 	
 	
+	/*
+	 * Comprobar main con más argumentos en args.
+	 */
+	@Test
+	@DisplayName("Crear un main con la longitud de los argumentos superior")
+	public void mainArgumetnosSuperior() {
+		String [] a={"0.0.0.0","12","12"};
+		App.main(a);
+	}
 	
 	
+	/*
+	 * Comprueba main con una ip incorrecta ya que la primera parte de la ip es un numero superior a los valores perimitidos.
+	 */
+	@Test
+	@DisplayName("Probar la primera línea")
+	public void mainIpIncorrecta() {
+		String [] a={"1552.192.192.192","12"};
+		App.main(a);
+	}
 	
 	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-//	
-//	@Test
-//	@DisplayName("ip int invalido")
-//	public void ipIntInvalido() {
-//		// La ip son int validos. 
-//		String []ip = {"l2.192.192.192","23"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("mascara int invalido")
-//	public void mascaraIntInvalido() {
-//		// La ip son int validos. 
-//		String []ip = {"192.192.192.192","r3"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("mascara int superior")
-//	public void mascaraIntSuperior() {
-//		// La ip son int validos. 
-//		String []ip = {"192.192.192.192","40"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("mascara int inferior")
-//	public void mascaraIntInferior() {
-//		// La ip son int validos. 
-//		String []ip = {"l2.192.192.192","-123"};	
-//		App.main(ip);
-//	}
-//	
-//	
-//	@Test
-//	@DisplayName("Byte de la Ip superior")
-//	public void byteIpSuperior() {
-//		// Los Bytes de la ip son superiores. 
-//		String []ip = {"260.192.192.192","23"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("Byte de la Ip inferior")
-//	public void byteIpInferior() {
-//		// Los Bytes de la ip son superiores. 
-//		String []ip = {"-12.192.192.192","23"};	
-//		App.main(ip);
-//	}
-//	
-//	
-//	@Test
-//	@DisplayName("Ip incorrecta con 0")
-//	public void ipIncorrecta0() {
-//		// Los Bytes de la ip son inferiores. 
-//		String []ip = {"0.0.0.0","23"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("Ip incorrecta con 255")
-//	public void ipIncorrecta255() {
-//		// Los Bytes de la ip son inferiores. 
-//		String []ip = {"255.255.255.255","23"};	
-//		App.main(ip);
-//	}
-//	
-//	
-//	@Test
-//	@DisplayName("Clase incorrecta con 1")
-//	public void claseAIncorrecta() {
-//		// Clase de tipo A. 
-//		String []ip = {"1.255.255.255","23"};	
-//		App.main(ip);
-//	}
-//	
-////	@Test
-////	@DisplayName("Clase incorrecta con 1")
-////	public void claseAIncorrecta() {
-////		// Clase de tipo A. 
-////		String []ip = {"122.255.255.255","8"};	
-////		App.main(ip);
-////	}
-//	
-//	
-//	@Test
-//	@DisplayName("Clase incorrecta con 127")
-//	public void claseBIncorrecta() {
-//		// Clase de tipo B. 
-//		String []ip = {"127.255.255.255","23"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("Clase incorrecta con 130")
-//	public void claseCIncorrecta() {
-//		// Clase de tipo B. 
-//		String []ip = {"130.255.255.255","23"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("Clase incorrecta con 240")
-//	public void claseOtraIncorrecta() {
-//		// Clase de tipo B. 
-//		String []ip = {"240.255.255.255","23"};	
-//		App.main(ip);
-//	}
-//	
-//	@Test
-//	@DisplayName("Subnetting A true")
-//	public void subnettingATrue() {
-//		// Clase de tipo B. 
-//		String []ip = {"120.255.255.255","23"};	
-//		App.main(ip);
-//		assertTrue(true);
-//	}
-//	
-//	@Test
-//	@DisplayName("Subnetting A false")
-//	public void subnettingAFalse() {
-//		// Clase de tipo B. 
-//		String []ip = {"120.255.255.255","8"};	
-//		App.main(ip);
-//		assertFalse(false);
-//	}
-//	
-//	
-//	@Test
-//	@DisplayName("Subnetting B true")
-//	public void subnettingBTrue() {
-//		// Clase de tipo B. 
-//		String []ip = {"130.255.255.255","23"};	
-//		App.main(ip);
-//		//assertTrue(true);
-//	}
-//	
-//	@Test
-//	@DisplayName("Subnetting B false")
-//	public void subnettingBFalse() {
-//		// Clase de tipo B. 
-//		String []ip = {"140.255.255.255","16"};	
-//		App.main(ip);
-//		assertFalse(false);
-//	}
-//	
-//	
-//	@Test
-//	@DisplayName("Subnetting C true")
-//	public void subnettingCTrue() {
-//		// Clase de tipo B. 
-//		String []ip = {"194.255.255.255","12"};	
-//		App.main(ip);
-//		assertTrue(true);
-//	}
-//	
-//	@Test
-//	@DisplayName("Subnetting C false")
-//	public void subnettingCFalse() {
-//		// Clase de tipo B. 
-//		String []ip = {"194.255.255.255","24"};	
-//		String ipSep= ip[0];
-//		String mascara= ip[1];
-//		App.main(ip);
-//		assertEquals(false, App.isSubnetting(ip, mascara));
-//	}
-//	
+	/*
+	 * Este test solo esta para alcanzar el 100% de cobertura.
+	 */
 	@Test
 	@DisplayName("Probar la primera línea")
 	public void primeraLinea() {
-		// Este test solo esta para alcanzar el 100% de cobertura.
 		new App();
 		new UnApi();
-		String [] a={"hola"};
-		App.main(a);
-	}
-//	
-//	@Test
-//	@DisplayName("esIntValido con caracteres especiales")
-//	public void esIntValido1() {
-//		String ip = "10```20";
-//		assertFalse(App.esIntValido(ip));
-//	}
-//	
-//	
-//	
-//	
-//	
-////	 @Test
-////	 @DisplayName("Se pueden llenar el restaurante correctamente")
-////	 public void sePuedeLlenar() {
-////	  int[] mesas = new int[5];
-////	  Restaurante.sentarMesa(mesas, 5);
-////	  Restaurante.sentarMesa(mesas, 4);
-////	  Restaurante.sentarMesa(mesas, 3);
-////	  Restaurante.sentarMesa(mesas, 2);
-////	  Restaurante.sentarMesa(mesas, 1);
-////	  assertArrayEquals(new int[] { 5, 4, 3, 2, 1 }, mesas);
-////	 }
-//	
-//	
+		}
+	
+	
 }
