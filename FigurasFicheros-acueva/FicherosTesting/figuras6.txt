@@ -1,0 +1,8 @@
+CO 600 600
+ST rojo 255 0 0 10
+ST azul 0 0 255 15
+ST verde 0 255 0 5
+ST gris 50 50 50 10
+CI 300,300 100 rojo
+CI 300,300 200 verde
+CI 300,300 300 azul

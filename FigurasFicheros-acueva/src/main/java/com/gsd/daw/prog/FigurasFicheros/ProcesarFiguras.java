@@ -34,7 +34,8 @@ public class ProcesarFiguras {
         for (int i = 0; i < figuras.size(); i++) {
             String linea = figuras.get(i);
             String[] partes = linea.split("\\s+");
-
+            
+            try {
             switch (partes[0]) {
                 case "CO":
                     if (partes.length != 3) throw new ExceptionFigurasFicheros("Contenedor inválido en línea: " + linea);
@@ -99,6 +100,9 @@ public class ProcesarFiguras {
 
                 default:
                     throw new ExceptionFigurasFicheros("Tipo de figura desconocido en línea: " + linea);
+            }
+            }catch(ExceptionFigurasFicheros e) {
+            	throw new ExceptionFigurasFicheros("Figura no válida."+figuras.get(i).toString());
             }
         }
 

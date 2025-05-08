@@ -9,8 +9,8 @@ import com.gsd.daw.prog.figuras.Contenedor;
 public class App {
     public static void main(String[] args) {
         if (args.length < 2) {
-            System.err.println("USO: <comando> <fichero-entrada> <fichero-salida>");
-            return;
+            System.err.println("USO: <fichero-entrada> <fichero-salida>");
+            return; 
         }
 
         String inputFileName = args[0];
@@ -45,7 +45,8 @@ public class App {
         }
 
         inputScannerFromFile.close();
-
+        
+        //revisar esto
         try {
             ProcesarFiguras procesador = new ProcesarFiguras(figuras, strokes);
             Contenedor contenedor = procesador.construirContenedorFiguras();
