@@ -22,13 +22,16 @@ public class ProcesarFiguras {
                 throw new ExceptionFigurasFicheros("Stroke inválido: " + strokeLine);
             }
 
-            String nombre = partes[1];
-            int r = Integer.parseInt(partes[2]);
-            int g = Integer.parseInt(partes[3]);
-            int b = Integer.parseInt(partes[4]);
-            int ancho = Integer.parseInt(partes[5]);
-
-            strokeMap.put(nombre, new Stroke(new Color((byte) r, (byte) g, (byte) b), ancho));
+            try {
+                String nombre = partes[1];
+                int r = Integer.parseInt(partes[2]);
+                int g = Integer.parseInt(partes[3]);
+                int b = Integer.parseInt(partes[4]);
+                int ancho = Integer.parseInt(partes[5]);
+                strokeMap.put(nombre, new Stroke(new Color((byte) r, (byte) g, (byte) b), ancho));
+            } catch (NumberFormatException e) {
+                throw new ExceptionFigurasFicheros("Valores de color o ancho inválidos en stroke: " + strokeLine);
+            }
         }
 
         for (int i = 0; i < figuras.size(); i++) {
@@ -101,7 +104,7 @@ public class ProcesarFiguras {
                 default:
                     throw new ExceptionFigurasFicheros("Tipo de figura desconocido en línea: " + linea);
             }
-            }catch(ExceptionFigurasFicheros e) {
+            }catch (NumberFormatException | ArrayIndexOutOfBoundsException | ExceptionFigurasFicheros e) {
             	throw new ExceptionFigurasFicheros("Figura no válida."+figuras.get(i).toString());
             }
         }

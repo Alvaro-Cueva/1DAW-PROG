@@ -13,25 +13,23 @@ public class App {
             return; 
         }
 
-        String inputFileName = args[0];
-        String outputFileName = args[1];
+        String ficheroEntrada = args[0];
+        String ficheroSalida = args[1];
 
         List<String> figuras = new ArrayList<>();
         List<String> strokes = new ArrayList<>();
         Scanner inputScannerFromFile = null;
 
         try {
-            inputScannerFromFile = new Scanner(new File(inputFileName));
+            inputScannerFromFile = new Scanner(new File(ficheroEntrada));
         } catch (FileNotFoundException e) {
-            System.err.println("ERROR: no se puede abrir [" + inputFileName + "]\n" + e.getMessage());
+            System.err.println("ERROR: no se puede abrir [" + ficheroEntrada + "]\n" + e.getMessage());
             return;
         }
 
-        int lineNumber = 1;
         while (inputScannerFromFile.hasNextLine()) {
             String line = inputScannerFromFile.nextLine().trim();
             if (line.isEmpty()) {
-                lineNumber++;
                 continue;
             }
 
@@ -40,18 +38,15 @@ public class App {
             } else {
                 figuras.add(line);
             }
-
-            lineNumber++;
         }
 
         inputScannerFromFile.close();
         
-        //revisar esto
         try {
             ProcesarFiguras procesador = new ProcesarFiguras(figuras, strokes);
             Contenedor contenedor = procesador.construirContenedorFiguras();
 
-            try (PrintWriter out = new PrintWriter(outputFileName)) {
+            try (PrintWriter out = new PrintWriter(ficheroSalida)) {
                 out.println(contenedor.toSvg());
             }
 
