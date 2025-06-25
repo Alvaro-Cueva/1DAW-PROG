@@ -43,4 +43,8 @@ public class ApacheLogEntry {
 		return result;
 	}
 
+	public String getRequest() {
+		return request;
+	}
+	
 }

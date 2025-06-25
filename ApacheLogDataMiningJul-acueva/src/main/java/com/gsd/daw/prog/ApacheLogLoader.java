@@ -58,6 +58,7 @@ public class ApacheLogLoader {
             for (ApacheLogEntry entry : logEntries) {
                 entry.save(connection);
                 rowsInserted++;
+                LOGGER.fine("Insertada fila " + rowsInserted + ": IP=" + entry.getIp() + ", Request=" + entry.getRequest());
             }
             LOGGER.info("Insertadas [" + rowsInserted + "] filas en BBDD.");
 
