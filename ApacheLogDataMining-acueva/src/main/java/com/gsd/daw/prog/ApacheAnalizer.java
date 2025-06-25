@@ -3,10 +3,13 @@ package com.gsd.daw.prog;
 import com.gsd.daw.analysis.LogAnalyzer;
 import com.gsd.daw.data.DatabaseConnector;
 import com.gsd.daw.model.ApacheLogEntry;
+
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApacheAnalizer {
     public static void main(String[] args) {
@@ -19,11 +22,9 @@ public class ApacheAnalizer {
             Connection connection = DatabaseConnector.getConnection(args[0], args[1], args[2], args[3]);
             System.out.println("INFO: conectado a BBDD.");
 
-
             String[][] logLines = loadLogsFromDB(connection);
-            System.out.println("INFO: leidas [" + logLines.length + "] lineas de BBDD.");
+            System.out.println("INFO: leídas [" + logLines.length + "] líneas de BBDD.");
 
- 
             ApacheLogEntry[] logEntries = new ApacheLogEntry[logLines.length];
             for (int i = 0; i < logLines.length; i++) {
                 String[] line = logLines[i];
@@ -43,29 +44,29 @@ public class ApacheAnalizer {
 
     private static String[][] loadLogsFromDB(Connection connection) throws SQLException {
         String query = "SELECT IP, TIMESTAMP, REQUEST, RESULT, BYTES, UA FROM APACHE_LOG_TBL";
-        
+
         try (Statement stmt = connection.createStatement();
              ResultSet rs = stmt.executeQuery(query)) {
-            int rowCount = 0;
+        	/**
+        	 * Lee todas las entradas de la tabla APACHE_LOG_TBL y devuelve los datos como un array bidimensional de Strings.
+        	 * Usamos una lista dinámica para evitar recorrer el ResultSet dos veces y así evitar el error ORA-17075,
+        	 * que ocurre si se intenta retroceder en un ResultSet de solo avance (forward-only).
+        	 */
+
+            List<String[]> rows = new ArrayList<>();
+
             while (rs.next()) {
-                rowCount++;
+                String[] row = new String[6];
+                row[0] = rs.getString("IP");
+                row[1] = rs.getString("TIMESTAMP");
+                row[2] = rs.getString("REQUEST");
+                row[3] = rs.getString("RESULT");
+                row[4] = rs.getString("BYTES");
+                row[5] = rs.getString("UA");
+                rows.add(row);
             }
-            
-            String[][] result = new String[rowCount][6];
-            rs.beforeFirst();
-            
-            int i = 0;
-            while (rs.next()) {
-                result[i][0] = rs.getString("IP");
-                result[i][1] = rs.getString("TIMESTAMP");
-                result[i][2] = rs.getString("REQUEST");
-                result[i][3] = rs.getString("RESULT");
-                result[i][4] = rs.getString("BYTES");
-                result[i][5] = rs.getString("UA");
-                i++;
-            }
-            
-            return result;
+
+            return rows.toArray(new String[0][6]);
         }
     }
 }
